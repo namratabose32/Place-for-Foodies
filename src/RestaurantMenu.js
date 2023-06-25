@@ -1,26 +1,12 @@
 import { useParams } from "react-router-dom";
-import {useState, useEffect } from "react";
-import { IMG_URL, swiggy_menu_api_URL } from "./constants";
+import { IMG_URL } from "./constants";
+import useRestaurant from "../utils/useRestaurant";
 
 const RestaurantMenu = () =>{
     // to read dynamic url params
     const {id}=useParams();
-    const [restaurant,setRestaurant]=useState({});
-    const [menu,setMenu]=useState({});
-    useEffect(()=>{
-        getRestaurantInfo();
-    },[]);
-
-    async function getRestaurantInfo(){
-        const data = await fetch(swiggy_menu_api_URL +id);
-        const json=await data.json();
-        console.log(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
-        setRestaurant(json.data.cards[0].card.card.info);
-        setMenu(json.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
-    }
-
     
-
+    const {restaurant,menu} = useRestaurant(id);
     return (
         <div className="menu">
             <div>
@@ -28,7 +14,7 @@ const RestaurantMenu = () =>{
                 <h1>{restaurant?.name}</h1>
                 <img src={IMG_URL+restaurant.cloudinaryImageId}/>
                 <h3>City : {restaurant?.city}</h3>
-                <h3>Area : {restaurant?.areaName}</h3>
+                <p>Area : {restaurant?.areaName}</p>
                 <h3>Ratings : {restaurant?.avgRating}</h3>
                 <h3>Cost for two : {restaurant?.costForTwoMessage}</h3>
             </div>

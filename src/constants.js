@@ -1,5 +1,6 @@
 // Image CDN URL for Restaurant card
 export const IMG_URL=  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+
 export const swiggy_menu_api_URL="https://corsproxy.io?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=";
 //export const swiggy_menu_api_URL="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=23.3437657&lng=85.3149142&submitAction=ENTER&restaurantId="
 // export const swiggy_menu_api_URL=[
