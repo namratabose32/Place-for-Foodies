@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import Error from "./Error";
 import RestaurantMenu from "./RestaurantMenu";
 import Profile from "./Profile";
+import Login from "./components/Login";
 /**
  * Header
  *  -logo
@@ -73,9 +74,12 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurant/:id",
                 element:<RestaurantMenu/>,
-            }
+            },
         ],
-    },
+    },{
+        path: "/login",
+        element:<Login/>
+    }
     
 ])
 const root= ReactDOM.createRoot(document.getElementById("root"));
