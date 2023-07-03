@@ -1,4 +1,4 @@
-import React from "react";
+import React, {lazy, Suspense, useState} from "react";
 import  ReactDOM  from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,7 +9,10 @@ import Contact from "./components/Contact";
 import Error from "./Error";
 import RestaurantMenu from "./RestaurantMenu";
 import Profile from "./Profile";
+import Shimmer from "./components/Shimmer";
 import Login from "./components/Login";
+import Instamart from "./components/InstaMart";
+import userContext from "../utils/userContext";
 /**
  * Header
  *  -logo
@@ -33,17 +36,26 @@ import Login from "./components/Login";
 // -Funtional - new    and  class based - OLD
 
 
-
-
+//chunking OR code splitting OR dynamic bundling OR Lazy Loading OR on demand loading OR dynamic import
+// const Instamart=lazy(()=> import("./components/InstaMart"));
 
 
 const AppComponent=()=> {
+    const [user,setUser]=useState({
+        name:"Disha bose",
+        email:"dishabose7979@gmail.com",
+    });
     return(
-        <>
+        <userContext.Provider 
+            value={{
+                user:user,
+                setUser:setUser
+            }}
+        >
             <Header />
             <Outlet/>
             <Footer />
-        </>
+        </userContext.Provider>
     );
 };
 
@@ -70,6 +82,13 @@ const appRouter = createBrowserRouter([
             {
                 path:"/contact",
                 element: <Contact />
+            },
+            {
+                path:"/instamart",
+                element:
+                <Suspense fallback={<Shimmer/>}>
+                    <Instamart/>
+                </Suspense>
             },
             {
                 path: "/restaurant/:id",

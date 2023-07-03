@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { Link } from "react-router-dom";
+import userContext from "../../utils/userContext";
 const Title=()=> (
     <a href="/">
         <img className="logo" alt="Food Villa"
@@ -8,7 +9,9 @@ const Title=()=> (
     </a>
 );
 const HeaderComponent= () => {
-    const [isLoggedIn,setIsLoggedIn]=useState(false);
+    const [isLoggedIn,setIsLoggedIn]=useState(true);
+    const {user}=useContext(userContext);
+    
     return (
         <div className="header">
             <Title/>
@@ -27,6 +30,10 @@ const HeaderComponent= () => {
                         <Link to="/cart">Cart</Link>
                     </li>
                     <li>
+                        <Link to="/instamart">InstaMart</Link>
+                    </li>
+                    <li>
+                    {user.name}
                     {isLoggedIn ?
 
                         <button className="Btn"  onClick={()=> setIsLoggedIn(false)}>
@@ -36,11 +43,11 @@ const HeaderComponent= () => {
                                 </svg>
                             </div>
                             <div className="text">Logout</div>
+                            
                         </button>
-
                         // <button className="login-btn" onClick={()=> setIsLoggedIn(false)}>Logout</button>:
                         :<Link to="/login" onClick={()=>setIsLoggedIn(true)}>
-                        <button className="Btn"  style={{backgroundColor: "#228B22"}}>
+                        <button className="Btn" style={{backgroundColor: 'green'}} >
                             <div className="sign">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.4857 20H19.4857C20.5903 20 21.4857 19.1046 21.4857 18V6C21.4857 4.89543 20.5903 4 19.4857 4H15.4857V6H19.4857V18H15.4857V20Z" fill="currentColor" /><path d="M10.1582 17.385L8.73801 15.9768L12.6572 12.0242L3.51428 12.0242C2.96199 12.0242 2.51428 11.5765 2.51428 11.0242C2.51429 10.4719 2.962 10.0242 3.51429 10.0242L12.6765 10.0242L8.69599 6.0774L10.1042 4.6572L16.4951 10.9941L10.1582 17.385Z" fill="currentColor" /></svg>
                             </div>

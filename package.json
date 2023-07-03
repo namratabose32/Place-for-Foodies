@@ -4,8 +4,8 @@
   "description": "This is from the namaste-react course",
   "scripts": {
     "start": "parcel index.html",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "parcel build index.html",
     "test": "jest"
   },
@@ -16,7 +16,8 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "gh-pages": "^5.0.0",
     "parcel": "^2.9.2",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "tailwindcss": "^3.3.2"
   },
   "homepage": "https://github.com/namratabose32/Place-for-Foodies.git",
   "dependencies": {
