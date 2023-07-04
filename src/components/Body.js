@@ -24,7 +24,7 @@ const Body=()=> {
         
         const data = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.3437657&lng=85.3149142&page_type=DESKTOP_WEB_LISTING");
         const json= await data.json();
-        console.log(json.data);
+        // console.log(json.data);
 
         if ((time === 23 && minutes >= 45) || (time >= 0 && time < 7)){  // 0 is midnight
             setAllRestaurants(json.data?.cards[0]?.data?.data?.cards);
@@ -50,7 +50,7 @@ const Body=()=> {
 
     if(!allRestaurants)
         return null;
-    console.log(allRestaurants.length);
+    // console.log(allRestaurants.length);
     return (allRestaurants?.length === 0) ? (<Shimmer/>): (
         <>
             <div className="search-container">

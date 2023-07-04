@@ -1,6 +1,8 @@
 import { useState,useContext } from "react";
 import { Link } from "react-router-dom";
 import userContext from "../../utils/userContext";
+import {useSelector } from "react-redux/es/hooks/useSelector";
+import store from "../../utils/store";
 const Title=()=> (
     <a href="/">
         <img className="logo" alt="Food Villa"
@@ -11,7 +13,8 @@ const Title=()=> (
 const HeaderComponent= () => {
     const [isLoggedIn,setIsLoggedIn]=useState(true);
     const {user}=useContext(userContext);
-    
+    const cartItems=useSelector(store=> store.cart.items);
+    console.log(cartItems);
     return (
         <div className="header">
             <Title/>
@@ -27,7 +30,7 @@ const HeaderComponent= () => {
                         <Link to="/contact">Contact</Link>
                     </li>
                     <li>
-                        <Link to="/cart">Cart</Link>
+                        <Link to="/cart">Cart - {cartItems.length} items</Link>
                     </li>
                     <li>
                         <Link to="/instamart">InstaMart</Link>

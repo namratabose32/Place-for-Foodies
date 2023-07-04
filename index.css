@@ -10,7 +10,7 @@
 }
 .nav-items>ul>li:active {
     transform: translateY(4px);
-}
+} 
 .nav-items > ul>li{
     padding: 10px;
 }
@@ -345,4 +345,16 @@ p{
 .button3:hover {
   background-color: red;
   color: white;
+}
+/* login form ends */
+
+/* food item card */
+.card{
+  padding: 20px;
+  margin : 20px;
+  background-color: azure;
+  width: fit-content;
+}
+.food{
+  display: flex;
 }

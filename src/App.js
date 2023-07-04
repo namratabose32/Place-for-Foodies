@@ -13,6 +13,9 @@ import Shimmer from "./components/Shimmer";
 import Login from "./components/Login";
 import Instamart from "./components/InstaMart";
 import userContext from "../utils/userContext";
+import { Provider } from "react-redux";
+import Cart from "./components/Cart";
+import store from "../utils/store";
 /**
  * Header
  *  -logo
@@ -46,16 +49,18 @@ const AppComponent=()=> {
         email:"dishabose7979@gmail.com",
     });
     return(
-        <userContext.Provider 
-            value={{
-                user:user,
-                setUser:setUser
-            }}
-        >
-            <Header />
-            <Outlet/>
-            <Footer />
-        </userContext.Provider>
+        <Provider store={store}>
+            <userContext.Provider 
+                value={{
+                    user:user,
+                    setUser:setUser
+                }}
+            >
+                <Header />
+                <Outlet/>
+                <Footer />
+            </userContext.Provider>
+        </Provider>
     );
 };
 
@@ -94,6 +99,10 @@ const appRouter = createBrowserRouter([
                 path: "/restaurant/:id",
                 element:<RestaurantMenu/>,
             },
+            {
+                path:"/cart",
+                element:<Cart/>
+            }
         ],
     },{
         path: "/login",
