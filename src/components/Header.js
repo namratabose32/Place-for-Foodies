@@ -17,9 +17,12 @@ const HeaderComponent= () => {
     console.log(cartItems);
     return (
         <div className="header">
-            <Title/>
+            <ul>
+                <li><Title/></li>
+            </ul>
             <div className="nav-items">
                 <ul>
+                    
                     <li>
                         <Link to="/">Home</Link>
                     </li>
@@ -30,13 +33,13 @@ const HeaderComponent= () => {
                         <Link to="/contact">Contact</Link>
                     </li>
                     <li>
-                        <Link to="/cart">Cart - {cartItems.length} items</Link>
-                    </li>
-                    <li>
                         <Link to="/instamart">InstaMart</Link>
                     </li>
                     <li>
-                    {user.name}
+                        <Link to="/cart">Cart <sup>{cartItems.length}</sup></Link>
+                    </li>
+                    <li>
+                    {/* {user.name} */}
                     {isLoggedIn ?
 
                         <button className="Btn"  onClick={()=> setIsLoggedIn(false)}>

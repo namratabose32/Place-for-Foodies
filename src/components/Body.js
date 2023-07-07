@@ -84,7 +84,7 @@ const Body=()=> {
                     }}
                 >Search
               </button>
-              <input value={user.name}
+              {/* <input value={user.name}
                 onChange={e=>setUser({
                     ...user,
                     name: e.target.value,
@@ -95,7 +95,7 @@ const Body=()=> {
                     ...user,
                     email: e.target.value,
                 })}
-              ></input>
+              ></input> */}
             </div>
             <div className="restaurant-list">
                 {(filteredRestaurants.length==0)? <h1>No restaurant found.....</h1>:
