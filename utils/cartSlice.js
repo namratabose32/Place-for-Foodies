@@ -19,6 +19,7 @@ const cartSlice= createSlice({
             const index = state.items.findIndex(item => item.id === removeItem.id);
             const removedItem = state.items.splice(index, 1)[0];
             state.price -= removedItem.price/100;
+            toast.success(`Item removed from cart`);
         },
         addExistingItem: (state, action) => {
             const existingItem = action.payload;
