@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { toast } from "react-hot-toast";
 const cartSlice= createSlice({
     name:'cart',
     initialState:{
@@ -11,6 +11,7 @@ const cartSlice= createSlice({
             const item=action.payload;
             state.items.push(item);
             state.price+=item.price/100;
+            toast.success(`Item added to cart`);
         },
         removeItem:(state,action)=>{
             // state.items.pop();
@@ -26,6 +27,7 @@ const cartSlice= createSlice({
               state.items[index] = existingItem;
               state.price += existingItem.price/100;
             }
+            toast.success(`Item quantity increased`);
         },
         removeExistingItem: (state, action) => {
             const existingItem = action.payload;
@@ -33,11 +35,14 @@ const cartSlice= createSlice({
             if (index !== -1) {
               state.items[index] = existingItem;
               state.price -= existingItem.price/100;
+              toast.success(`Item quantity decreased`);
             }
         },
 
         clearItem:(state)=>{
             state.items=[];
+            state.price=0;
+            toast.success(`Cart cleared`);
         },
     }
 });

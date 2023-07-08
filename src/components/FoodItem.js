@@ -1,7 +1,6 @@
 import { IMG_URL } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem,addExistingItem,removeExistingItem } from "../../utils/cartSlice";
-import { useState } from "react";
 const FoodItem = ({
   imageId,
   id,

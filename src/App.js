@@ -16,6 +16,7 @@ import userContext from "../utils/userContext";
 import { Provider } from "react-redux";
 import Cart from "./components/Cart";
 import store from "../utils/store";
+import { Toaster } from "react-hot-toast";
 /**
  * Header
  *  -logo
@@ -45,11 +46,12 @@ import store from "../utils/store";
 
 const AppComponent=()=> {
     const [user,setUser]=useState({
-        name:"Disha bose",
-        email:"dishabose7979@gmail.com",
+        name:"Namrata Bose",
+        email:"namratabose32@gmail.com",
     });
     return(
         <Provider store={store}>
+            <Toaster position='top-center' reverseOrder={false} />
             <userContext.Provider 
                 value={{
                     user:user,
